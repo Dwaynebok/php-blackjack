@@ -27,8 +27,8 @@ class Blackjack
     {
       $player = new Player();
       $dealer = new Player();
-      $deck = new Deck();
-      $deck->shuffle();
+      $deck = new Deck(); //Create a new deck object
+      $deck->shuffle(); //Shuffle the cards with shuffle method on deck.
     }
 
 
