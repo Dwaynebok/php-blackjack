@@ -23,10 +23,14 @@ class Blackjack
         return $this->player;
     }
 
-    public function __construct() // instantiate Instantiate the Player class twice, insert it into the player property and a dealer property.
+    public function __construct() //  Instantiate the Player class twice, insert it into the player property and a dealer property.
     {
-        $player = new Player();
-        $dealer = new Player();
+      $player = new Player();
+      $dealer = new Player();
+      $deck = new Deck();
+      shuffle($deck);
     }
+
+
 
 }
