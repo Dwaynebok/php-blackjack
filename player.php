@@ -18,6 +18,14 @@ class player
 
     }
 
+    private function getScore(){
+
+    }
+    private function hasLost(){
+
+    }
+
+
 
 
 
