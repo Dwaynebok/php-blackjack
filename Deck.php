@@ -32,6 +32,7 @@ class Deck
 
     public function shuffle() : void {
         shuffle($this->cards);
+
     }
 
     /** @return Card[] */
