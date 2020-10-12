@@ -28,7 +28,7 @@ class Blackjack
       $player = new Player();
       $dealer = new Player();
       $deck = new Deck();
-      shuffle($deck);
+      $deck->shuffle();
     }
 
 
