@@ -29,14 +29,14 @@ class Blackjack
 
     public function __construct() //  Instantiate the Player class twice, insert it into the player property and a dealer property.
     {
-     // $player = new Player();
-     // $dealer = new Player();
-        $deck = new Deck();
-        $deck->shuffle();
-        foreach($deck->getCards() AS $card) {
-            echo $card->getUnicodeCharacter(true);
-            echo '<br>';
-        } //Shuffle the cards with shuffle method on deck.
+        $this->deck = new Deck();
+        $this->deck->shuffle();
+       // foreach($deck->getCards() AS $card) {
+         //   echo $card->getUnicodeCharacter(true);
+           // echo '<br>';
+        //}
+        $this->player = new Player($this->deck);
+        $this->dealer = new Player($this->deck);
     }
 
 

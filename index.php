@@ -16,39 +16,27 @@ require 'Player.php';
 require 'Suit.php';
 require 'Deck.php';
 
-$blackJack  = new Blackjack();
+$blackJack = new Blackjack();
 $player = $blackJack->getPlayer();
 $dealer = $blackJack->getDealer();
 
-if (isset($_SESSION["black"])){
+if (isset($_SESSION["black"])) {
     $_SESSION["Blackjack"] = $blackJack;
 }
 
-if(isset($_POST['hit'])){
-    $player = $blackJack->getPlayer();
-    var_dump($player->hit());
+if (!isset($_POST['action'])) {
+    echo "game has started";
 
-    if (isset($_POST['surrender'])){
-        $player = $blackJack->getPlayer();
-        var_dump($player->hit());
-    }
 
-    if (isset($_POST['getScore'])){
-        $player = $blackJack->getPlayer();
-        var_dump($player->hit());
+} elseif ($_POST['action'] === 'hit') {
+    //$player->hit();
 
-    if (isset($_POST['stand'])){
-        $player = $blackJack->getPlayer();
-        var_dump($blackJack->hit());
-    }
 
-    if (isset($_POST['hasLost'])){
-        $player = $blackJack->getPlayer();
-        var_dump($blackJack->hit());
-    }
+} elseif ($_POST['action'] === 'stand') {
+   // $player->hit();
 
-    }
-
+}elseif ($_POST['action'] === 'surrender') {
+    $player->hasLost();
 
 }
 ?>
@@ -66,12 +54,10 @@ if(isset($_POST['hit'])){
 
 
 <form action="index.php" method="POST" class="mt-5">
-    <input type="submit" class="btn btn-danger text-center" value="hit" name="hit">
-    <input type="submit" class="btn btn-danger text-center" value="stand" name="stand">
-    <input type="submit" class="btn btn-danger text-center" value="surrender" name="surrender">
+    <input type="submit" class="btn btn-danger text-center" value="hit" name="action">
+    <input type="submit" class="btn btn-danger text-center" value="stand" name="action">
+    <input type="submit" class="btn btn-danger text-center" value="surrender" name="action">
 </form>
-
-
 
 
 </body>

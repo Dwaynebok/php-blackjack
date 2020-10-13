@@ -10,26 +10,33 @@ class player
 {
     private array $cards = [];
     private bool $lost = false;
+    public $score = 0;
 
-    private function hit(){
 
-    }
-
-    private function surrender(){
+    public function hit(){
 
     }
 
-    private function getScore(){
+    public function surrender(){
+        $this->lost = true;
+        echo "you lost";
 
     }
-    private function hasLost(){
 
-    }
-
-    function __construct($deck)
+    public function getScore()
     {
-        $deck->drawCard();
-        $deck->drawCard();
+    }
+    public function hasLost(){
+        $this->lost = true;
+        echo "you lost";
+
+    }
+
+    function __construct(Deck $deck)
+    {
+        $this->cards = [];
+        array_push($this->cards, $deck->drawCard());
+        array_push($this->cards, $deck->drawCard());
 
     }
 
