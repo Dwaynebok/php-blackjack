@@ -33,7 +33,21 @@ if(isset($_POST['hit'])){
         var_dump($player->hit());
     }
 
-    if (isset($_POST['']))
+    if (isset($_POST['getScore'])){
+        $player = $blackJack->getPlayer();
+        var_dump($player->hit());
+
+    if (isset($_POST['stand'])){
+        $player = $blackJack->getPlayer();
+        var_dump($blackJack->hit());
+    }
+
+    if (isset($_POST['hasLost'])){
+        $player = $blackJack->getPlayer();
+        var_dump($blackJack->hit());
+    }
+
+    }
 
 
 }
