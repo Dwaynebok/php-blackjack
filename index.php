@@ -17,11 +17,26 @@ require 'Suit.php';
 require 'Deck.php';
 
 $blackJack  = new Blackjack();
+$player = $blackJack->getPlayer();
+$dealer = $blackJack->getDealer();
+
 if (isset($_SESSION["black"])){
     $_SESSION["Blackjack"] = $blackJack;
 }
 
+if(isset($_POST['hit'])){
+    $player = $blackJack->getPlayer();
+    var_dump($player->hit());
 
+    if (isset($_POST['surrender'])){
+        $player = $blackJack->getPlayer();
+        var_dump($player->hit());
+    }
+
+    if (isset($_POST['']))
+
+
+}
 ?>
 
 <!doctype html>
