@@ -27,14 +27,24 @@ class Blackjack
         return $this->player;
     }
 
+    /**
+     * @return Deck
+     */
+    public function getDeck(): Deck
+    {
+        return $this->deck;
+    }
+
+    public function showCard(){
+        $this->player->showCard();
+    }
+
+
+
     public function __construct() //  Instantiate the Player class twice, insert it into the player property and a dealer property.
     {
         $this->deck = new Deck();
         $this->deck->shuffle();
-       // foreach($deck->getCards() AS $card) {
-         //   echo $card->getUnicodeCharacter(true);
-           // echo '<br>';
-        //}
         $this->player = new Player($this->deck);
         $this->dealer = new Player($this->deck);
     }

@@ -5,40 +5,58 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-session_start();
-if (!isset($_SESSION['black'])) {
-    $_SESSION['black'] = "";
-}
-
 require 'Blackjack.php';
 require 'Card.php';
 require 'Player.php';
 require 'Suit.php';
 require 'Deck.php';
 
-$blackJack = new Blackjack();
-$player = $blackJack->getPlayer();
-$dealer = $blackJack->getDealer();
 
-if (isset($_SESSION["black"])) {
-    $_SESSION["Blackjack"] = $blackJack;
+session_start();
+
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+}
+
+
+$blackJack = new Blackjack();
+$deck = $blackJack->getDeck();
+$player = $blackJack->getPlayer();
+//$player = $blackJack->getPlayer();
+//$dealer = $blackJack->getDealer();
+
+if (!isset($_SESSION["black"])) {
+    $_SESSION["black"] = $blackJack;
+} else {
+    $blackJack = $_SESSION['black'];
 }
 
 if (!isset($_POST['action'])) {
-    echo "game has started";
+    echo "game has started<br/>";
+
+} elseif ($_POST['action'] == 'hit') {
+ echo "player has hit<br/>";
+  //  $player = $blackJack->getPlayer();
+   //$player->hit($deck);
 
 
-} elseif ($_POST['action'] === 'hit') {
-    //$player->hit();
+} elseif ($_POST['action'] == 'stand') {
+   echo "player stand<br/>";
 
-
-} elseif ($_POST['action'] === 'stand') {
-   // $player->hit();
-
-}elseif ($_POST['action'] === 'surrender') {
+}elseif ($_POST['action'] == 'surrender') {
     $player->hasLost();
 
 }
+
+$blackJack->showCard();
+
 ?>
 
 <!doctype html>
@@ -63,3 +81,4 @@ if (!isset($_POST['action'])) {
 </body>
 </html>
 
+<?php whatIsHappening()?>;

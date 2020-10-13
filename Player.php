@@ -13,32 +13,47 @@ class player
     public $score = 0;
 
 
-    public function hit(){
+    public function hit(Deck $deck)
+    {
+        $nextCard = $deck->drawCard();
+        array_push($this->cards, $nextCard);
+
 
     }
 
-    public function surrender(){
+    public function surrender()
+    {
         $this->lost = true;
-        echo "you lost";
+        echo "You lost!<br/>";
 
     }
 
     public function getScore()
     {
+
     }
-    public function hasLost(){
+
+    public function hasLost()
+    {
         $this->lost = true;
-        echo "you lost";
+        echo "You lost!<br/>";
 
     }
 
     function __construct(Deck $deck)
     {
-        $this->cards = [];
+
         array_push($this->cards, $deck->drawCard());
         array_push($this->cards, $deck->drawCard());
 
     }
 
+    public function showCard()
+    {
+        foreach ($this->cards as $card) {
+            echo $card->getUnicodeCharacter(true);
+            echo '<br>';
 
+        }
+    }
 }
