@@ -5,18 +5,46 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
-require_once 'Blackjack.php';
-
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $blackJack  = new Blackjack();
-  $blackJack->blackjack();
-  exit();
+session_start();
+if (!isset($_SESSION['black'])) {
+    $_SESSION['black'] = "";
 }
+
+require 'Blackjack.php';
+require 'Card.php';
+require 'Player.php';
+require 'Suit.php';
+require 'Deck.php';
+
+$blackJack  = new Blackjack();
+if (isset($_SESSION["black"])){
+    $_SESSION["Blackjack"] = $blackJack;
+}
+
+
 ?>
-<form action="<? echo $_SERVER['']?>" method="post" id="searchMealForm">
-  <input type="search" size="35" placeholder="What Food Are you looking for?" id="mealName" class="meal"/>
-  <input type="search" placeholder="City Area" id="mealLocation" class="meal">
-  <input type="submit" value="Satisfy Me" id="findMeal" />
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<form action="index.php" method="POST" class="mt-5">
+    <input type="submit" class="btn btn-danger text-center" value="hit" name="hit">
+    <input type="submit" class="btn btn-danger text-center" value="stand" name="stand">
+    <input type="submit" class="btn btn-danger text-center" value="surrender" name="surrender">
 </form>
+
+
+
+
+</body>
+</html>
 
