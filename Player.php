@@ -10,7 +10,7 @@ class player
 {
     private array $cards = [];
     private bool $lost = false;
-    public $score = 0;
+
 
 
     public function hit(Deck $deck)
@@ -30,6 +30,12 @@ class player
 
     public function getScore()
     {
+        $score = 0;
+        foreach ($this->cards as $value){
+            $score += $value->getValue();
+
+    }
+        return$score;
 
     }
 
