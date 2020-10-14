@@ -35,7 +35,7 @@ class player
             $score += $value->getValue();
 
     }
-        return$score;
+        return $score;
 
     }
 
@@ -54,12 +54,9 @@ class player
 
     }
 
-    public function showCard()
+    public function getCard()
     {
-        foreach ($this->cards as $card) {
-            echo $card->getUnicodeCharacter(true);
-            echo '<br>';
-
-        }
+        return $this->cards;
     }
+
 }

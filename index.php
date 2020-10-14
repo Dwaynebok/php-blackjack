@@ -29,6 +29,7 @@ function whatIsHappening() {
 $blackJack = new Blackjack();
 $deck = $blackJack->getDeck();
 $player = $blackJack->getPlayer();
+
 //$player = $blackJack->getPlayer();
 //$dealer = $blackJack->getDealer();
 
@@ -41,21 +42,25 @@ if (!isset($_SESSION["black"])) {
 if (!isset($_POST['action'])) {
     echo "game has started<br/>";
 
-} elseif ($_POST['action'] === 'hit') {
+} elseif ($_POST['action'] == 'hit') {
+    $player = $blackJack->getPlayer();
+    $player->hit($deck);
  echo "player has hit<br/>";
-  //  $player = $blackJack->getPlayer();
-   //$player->hit($deck);
 
 
-} elseif ($_POST['action'] === 'stand') {
+
+} elseif ($_POST['action'] == 'stand') {
    echo "player stand<br/>";
 
-}elseif ($_POST['action'] === 'surrender') {
+}elseif ($_POST['action'] == 'surrender') {
     $player->hasLost();
 
 }
 
-$blackJack->showCard();
+foreach($player->getCard() AS $card) {
+    echo $card->getUnicodeCharacter(true);
+    echo '<br>';
+}
 
 ?>
 
